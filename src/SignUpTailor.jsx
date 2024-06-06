@@ -5,9 +5,8 @@ import sewing_machine from './img/sewing_machine.png';
 import logo from './img/logo_cropped.png'; // Import your logo image
 import { ThemeProvider } from "@mui/material/styles";
 import fontcolorTheme from './fontcolorTheme'; // Import your custom theme
-import { Button, Typography, FormControl, FormLabel, Input, Link } from "@mui/material";
-
-
+import { Typography, Link } from "@mui/material";
+import CarouselForm from "./CarouselFormTailor"; // Ensure this path is correct
 
 function SignUpTailor() {
     return (
@@ -15,7 +14,7 @@ function SignUpTailor() {
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'row',
-                height: '100vh'  // Set height to match the viewport height
+                height: '100vh' // Set height to match the viewport height
             }}>
                 <Container sx={{
                     display: 'flex',
@@ -35,17 +34,16 @@ function SignUpTailor() {
                     p: {
                         xs: '0%'
                     },
-                    bgcolor: '#79A8A9',  // corrected color name
+                    bgcolor: '#79A8A9',
                 }}>
-
                     <Container sx={{
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: '100%', // Ensure the container takes up the full width
-                        height: '100%', // Ensure the container takes up the full height
-                        overflow: 'hidden' // Hide any overflow content      
+                        width: '100%',
+                        height: '100%',
+                        overflow: 'hidden'
                     }}>
                         <img src={sewing_machine} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} alt="Sewing Machine" />
                     </Container>
@@ -64,9 +62,9 @@ function SignUpTailor() {
                         xs: '100%',
                         sm: '100%'
                     },
-                    bgcolor: {xs:'#79A8A9',sm:'white',md:'white'}  // corrected color name
+                    bgcolor: { xs: '#79A8A9', sm: 'white', md: 'white' }
                 }}>
-                    <main >
+                    <main>
                         <Box
                             sx={{
                                 width: 300,
@@ -78,43 +76,24 @@ function SignUpTailor() {
                                 flexDirection: 'column',
                                 gap: 2,
                                 boxShadow: 'md',
-                                bgcolor:'white',
-                                borderRadius:'16px'
+                                bgcolor: 'white',
+                                borderRadius: '16px'
                             }}
                             variant="outlined"
                         >
-                            <div sx={{ mb:'10px' }}>
+                            <div sx={{ mb: '10px' }}>
                                 <Typography variant="h4" component="h1">
-                                    <b>Sign in  <img src={logo} style={{width:'100px', m:'0px'}}/></b>
+                                    <b>Sign in <img src={logo} style={{ width: '100px', margin: '0px' }} alt="Logo" /></b>
                                 </Typography>
                             </div>
 
-                            <FormControl sx={{ mb:'20px' }}>
-                            <FormLabel sx={{ textAlign: "left" }}>Email</FormLabel>
-                                <Input
-                                    name="email"
-                                    type="email"
-                                    placeholder="johndoe@email.com"
-                                />
-                            </FormControl>
+                            <CarouselForm />
 
-                            <FormControl sx={{ mb:'10px' }} >
-                            <FormLabel sx={{ textAlign: "left" }}>Passsword</FormLabel>
-                                <Input
-                                    name="password"
-                                    type="password"
-                                    placeholder="password"
-                                />
-                            </FormControl>
-                            
-                            <Button sx={{ mt: 1 }}>Log in</Button>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
-                                You already have an account? 
-                                <Link href="/loginTailor">Log in</Link>
+                                You already have an account? <Link href="/loginTailor">Log in</Link>
                             </Typography>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
-                                Go back to Home Page
-                                <Link href="/home">Home</Link>
+                                Go back to Home Page <Link href="/home">Home</Link>
                             </Typography>
                         </Box>
                     </main>
@@ -122,6 +101,6 @@ function SignUpTailor() {
             </Box>
         </ThemeProvider>
     );
-};
+}
 
 export default SignUpTailor;
