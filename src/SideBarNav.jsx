@@ -11,7 +11,7 @@ import fontcolorTheme from "./fontcolorTheme";
 
 function SideBarNav() {
 
-    const [selectedButton, setSelectedButton] = useState('dashboard');
+    const [selectedButton, setSelectedButton] = useState('');
     const navigate = useNavigate();
     
 
@@ -29,7 +29,7 @@ function SideBarNav() {
             <nav>
                 <ul style={{ listStyle: 'none', marginTop: '40px' }}>
                     <li>
-                        <Button onClick={() => handleButtonClick('dashboard',"/")} style={{ backgroundColor: selectedButton === 'dashboard' ? "#C3E0EA" : '#fff', color: '#000', width: '80%',padding: '8px', textAlign: 'left', marginLeft: '1px',justifyContent:'flex-start',paddingLeft:'13px' }}>
+                        <Button onClick={() => handleButtonClick('dashboard',"/tailor/Dashboard")} style={{ backgroundColor: selectedButton === 'dashboard' ? "#C3E0EA" : '#fff', color: '#000', width: '80%',padding: '8px', textAlign: 'left', marginLeft: '1px',justifyContent:'flex-start',paddingLeft:'13px' }}>
                                  <img src={dashboard} style={{ width: '20px' }} />
                                 <Typography style={{ fontSize: '112%', marginLeft: '15px',textTransform: 'none' }}>Dashboard</Typography>
                         </Button>
@@ -41,7 +41,7 @@ function SideBarNav() {
                         </Button>
                     </li>
                     <li>
-                        <Button onClick={() => handleButtonClick('reviews',"/reviews")} style={{ backgroundColor: selectedButton === 'reviews' ? "#C3E0EA" : '#fff', color: '#000', width: '80%', padding: '8px', textAlign: 'left', marginLeft: '1px',justifyContent:'flex-start',paddingLeft:'13px' }}>
+                        <Button onClick={() => handleButtonClick('reviews',"/tailor/reviews")} style={{ backgroundColor: selectedButton === 'reviews' ? "#C3E0EA" : '#fff', color: '#000', width: '80%', padding: '8px', textAlign: 'left', marginLeft: '1px',justifyContent:'flex-start',paddingLeft:'13px' }}>
                                 <img src={review} style={{ width: '20px', marginTop: '3px' }} alt="Review Icon" />
                                 <Typography style={{ fontSize: '110%', marginLeft: '15px', textAlign: 'left',textTransform: 'none' }}>Reviews</Typography>
                         </Button>

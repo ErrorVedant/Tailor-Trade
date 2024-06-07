@@ -1,6 +1,6 @@
 import React from "react";
 import fontcolorTheme from "./fontcolorTheme";
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Button, Card, CardContent, Grid, Typography } from "@mui/material";
 import SideBarNav from "./SideBarNav";
 import increase from "./img/increase.png";
 import decrease from "./img/decrease.png";
@@ -12,9 +12,20 @@ import LinePlot from "./LinePlot";
 import DealsDetails from "./DealsDetails";
 import graph from "./img/graph.png";
 import Nav from "./Nav";
+import {Link} from "@mui/material";
+import { useAuth } from './context/AuthContext';
 
 function Dashboard() {
+    const { authState, logout } = useAuth();
 
+    console.log(authState.isAuthenticated);
+
+    if (!authState.isAuthenticated) {
+        return <>
+            <h1>Please Login To view this page</h1>
+            <Button><Link href="/tailor/login">Login</Link></Button></>;
+
+    }
 
     return(
         <div style={{ overflowY: 'auto' }}>

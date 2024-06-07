@@ -1,4 +1,5 @@
-import React from "react";
+import React ,{useState,useEffect} from "react";
+import { NavLink, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from "@mui/material/Container";
 import sewing_machine from './img/sewing_machine.png';
@@ -8,7 +9,43 @@ import fontcolorTheme from './fontcolorTheme'; // Import your custom theme
 import { Button, Typography, FormControl, FormLabel, Input, Link } from "@mui/material";
 import user1 from './img/user1.png';
 
-function SignUpUser() {
+const SignUpUser=()=> {
+    const navigate=useNavigate();
+    const [formData,setFormData]=useState({
+        username:'',
+        password:'',
+        email:'',
+        mobileno:''
+    })
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        console.log(formData);
+        try{
+            const response=await fetch('http://localhost:8080/user/signup',{
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Set the Content-Type header
+                },
+                body:JSON.stringify(formData),
+            });
+            const result = await response.json();
+            console.log(result.success);
+            if(result.success===true){
+                navigate("/user/login");
+            }
+           
+        }catch(error){
+            console.log("Error sending data to backend");
+            console.log(error);
+        }
+    };
+    const handleChange=(e)=>{
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    }
     return (
         <ThemeProvider theme={fontcolorTheme}>
             <Box sx={{
@@ -66,9 +103,10 @@ function SignUpUser() {
                     bgcolor: { xs: '#79A8A9', sm: 'white', md: 'white' }  // corrected color name
                 }}>
                     <main >
+                       
                         <Box
                             sx={{
-                                width: 340,
+                                width: 320,
                                 mx: 'auto', // margin left & right
                                 my: 4, // margin top & bottom
                                 py: 3, // padding top & bottom
@@ -78,16 +116,17 @@ function SignUpUser() {
                                 gap: 2,
                                 boxShadow: 'md',
                                 bgcolor: 'white',
+                                // border:"solid black",
                                 borderRadius: '16px'
                             }}
                             variant="outlined"
                         >
                             <div sx={{ mb: '10px' }}>
                                 <Typography variant="h4" component="h1">
-                                    <b>Sign in  <img src={logo} style={{ width: '100px', m: '0px' }} /></b>
+                                    <b>Sign Up  <img src={logo} style={{ width: '100px', m: '0px' }} /></b>
                                 </Typography>
                             </div>
-
+                            <form onSubmit={handleSubmit}>
                             <Box sx={{ 
                                 display: 'flex',
                                 flexDirection: 'row'}}>
@@ -96,16 +135,21 @@ function SignUpUser() {
                                     <Input
                                         name="username"
                                         type="text"
-                                        placeholder="Vedant"
+                                        placeholder="Name"
+                                        value={formData.username}
+                                        onChange={handleChange}
                                     />
                                 </FormControl>
 
                                 <FormControl sx={{ m: '10px' }} >
-                                    <FormLabel sx={{ textAlign: "left" }}>Passsword</FormLabel>
+                                    <FormLabel sx={{ textAlign: "left" }}>Password</FormLabel>
                                     <Input
                                         name="password"
                                         type="password"
                                         placeholder="password"
+                                       
+                                        value={formData.password}
+                                        onChange={handleChange}
                                     />
                                 </FormControl>
                             </Box>
@@ -117,27 +161,34 @@ function SignUpUser() {
                                     <Input
                                         name="email"
                                         type="email"
-                                        placeholder="johndoe@email.com"
+                                        placeholder="Email"
+                                        
+                                        value={formData.email}
+                                        onChange={handleChange}
                                     />
                                 </FormControl>
 
                                 <FormControl sx={{ m: '10px' }}>
                                     <FormLabel sx={{ textAlign: "left" }}>Phone</FormLabel>
                                     <Input
-                                        name="phonr"
+                                        name="mobileno"
                                         type="number"
-                                        placeholder="1234567890"
+                                        placeholder="mobileNo"
+                                       
+                                        value={formData.mobileno}
+                                        onChange={handleChange}
                                     />
                                 </FormControl>
                             </Box>
-                            <Button sx={{ mt: 1 }}>Log in</Button>
+                            <Button sx={{ mt: 1 }} type="submit">SignUp</Button>
+                            </form>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Tou already have an account?
-                                <Link href="/loginUser">Log in</Link>
+                                <Link href="/user/login">Log in</Link>
                             </Typography>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Go back to Home Page
-                                <Link href="/home">Home</Link>
+                                <Link href="/">Home</Link>
                             </Typography>
                         </Box>
                     </main>
