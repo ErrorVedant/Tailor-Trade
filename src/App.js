@@ -10,30 +10,12 @@ import LoginTailor from './LoginTailor';
 import SignUpTailor from './SignUpTailor';
 import LoginUser from './LoginUser';
 import SignUpUser from './SignUpUser';
-<<<<<<< HEAD
-import TextMobileStepper from './Carousel';
-import AddNewOrders from './AddNewOrder';
-=======
-
->>>>>>> 28ae565dd1a6b1bdc19c1062ecab888c05b0822f
 function App() {
   return (
     <div className="App">
       <ThemeProvider theme={fontcolorTheme}>
         <Router> {/* Use BrowserRouter as Router */}
           <Routes>
-<<<<<<< HEAD
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/reviews" element={<Reviews />} />
-            <Route path="/AddNewOrders" element={<AddNewOrders />} />
-            <Route path="/home" element={<Home/>} />
-            <Route path="/example" element={<Example/>} />
-            <Route path="/loginTailor" element={<LoginTailor/>} />
-            <Route path="/signupTailor" element={<SignUpTailor/>} />
-            <Route path="/loginUser" element={<LoginUser/>} />
-            <Route path="/signupUser" element={<SignUpUser/>} />
-            <Route path="/corousel" element={<TextMobileStepper/>} />
-=======
             <Route path="/" element={<Home/>} />
             <Route path="/tailor/reviews" element={<Reviews />} />
             <Route path="/tailor/Dashboard" element={<Dashboard />} />
@@ -43,7 +25,6 @@ function App() {
             <Route path="/user/login" element={<LoginUser/>} />
             <Route path="/user/signup" element={<SignUpUser/>} />
             {/* <Route path="/corousel" element={<TextMobileStepper/>} /> */}
->>>>>>> 28ae565dd1a6b1bdc19c1062ecab888c05b0822f
           </Routes>
         </Router>
       </ThemeProvider>
