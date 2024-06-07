@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { FormControl, FormLabel, Input, Button, Snackbar, Alert, Box } from '@mui/material';
-<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
-=======
->>>>>>> 28c5eb99d84005e8ad4e8b7a120e5934813eba22
 
 const fields = [
   { name: 'username', label: 'Username', type: 'text', placeholder: 'John', required: true },
