@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { FormControl, FormLabel, Input, Button, Snackbar, Alert, Box } from '@mui/material';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
+=======
+>>>>>>> 28c5eb99d84005e8ad4e8b7a120e5934813eba22
 
 const fields = [
   { name: 'username', label: 'Username', type: 'text', placeholder: 'John', required: true },
@@ -18,7 +21,10 @@ const fields = [
 ];
 
 const CarouselForm = () => {
+<<<<<<< HEAD
   const navigate =useNavigate();
+=======
+>>>>>>> 28c5eb99d84005e8ad4e8b7a120e5934813eba22
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState(fields.reduce((acc, field) => {
     acc[field.name] = field.type === 'file' ? [] : '';
@@ -46,7 +52,11 @@ const CarouselForm = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleSignUpClick = async() => {
+=======
+  const handleLoginClick = () => {
+>>>>>>> 28c5eb99d84005e8ad4e8b7a120e5934813eba22
     const allFieldsFilled = fields.every(field => {
       if (field.required) {
         return field.type === 'file' ? formData[field.name].length > 0 : formData[field.name].trim() !== '';
@@ -59,6 +69,7 @@ const CarouselForm = () => {
       // Handle the login logic here
       console.log('All fields are filled. Proceed to login.');
       console.log(formData); // You can handle form submission here
+<<<<<<< HEAD
       try{
         const response=await fetch("http://localhost:8080/tailor/signup" ,{
           method:"POST",
@@ -75,6 +86,8 @@ const CarouselForm = () => {
       }catch(error){
         console.log("Error Sending to backend",error);
       }
+=======
+>>>>>>> 28c5eb99d84005e8ad4e8b7a120e5934813eba22
     }
   };
 
@@ -105,11 +118,17 @@ const CarouselForm = () => {
             Next
           </Button>
         </Box>
+<<<<<<< HEAD
         {step === Math.ceil(fields.length / 3) - 1 && (
           <Button onClick={handleSignUpClick}>
             Sign Up
           </Button>
         )}
+=======
+        <Button onClick={handleLoginClick}>
+          Sign Up
+        </Button>
+>>>>>>> 28c5eb99d84005e8ad4e8b7a120e5934813eba22
       </Box>
       <Snackbar
         open={showPrompt}
