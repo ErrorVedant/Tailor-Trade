@@ -141,8 +141,8 @@ const LoginTailor=()=>{
                                 />
                             </FormControl>
                             
-                            <Button sx={{ mt: 1 }} type="submit">Log in</Button>
                             </form>
+                            <Button sx={{ mt: 1 }} type="submit">Log in</Button>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Don&apos;t have an account? 
                                 <Link href="/tailor/signup">Sign up</Link>
