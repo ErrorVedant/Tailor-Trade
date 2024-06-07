@@ -11,7 +11,7 @@ import SignUpTailor from './SignUpTailor';
 import LoginUser from './LoginUser';
 import SignUpUser from './SignUpUser';
 import TextMobileStepper from './Carousel';
-
+import AddNewOrders from './AddNewOrder';
 function App() {
   return (
     <div className="App">
@@ -20,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/reviews" element={<Reviews />} />
+            <Route path="/AddNewOrders" element={<AddNewOrders />} />
             <Route path="/home" element={<Home/>} />
             <Route path="/example" element={<Example/>} />
             <Route path="/loginTailor" element={<LoginTailor/>} />
