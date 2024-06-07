@@ -10,13 +10,16 @@ import LoginTailor from './LoginTailor';
 import SignUpTailor from './SignUpTailor';
 import LoginUser from './LoginUser';
 import SignUpUser from './SignUpUser';
+
+import AddNewOrders from './AddNewOrder';
 function App() {
   return (
     <div className="App">
       <ThemeProvider theme={fontcolorTheme}>
         <Router> {/* Use BrowserRouter as Router */}
-          <Routes>
+        <Routes>
             <Route path="/" element={<Home/>} />
+            <Route path="/tailor/AddNewOrders" element={<AddNewOrders />} />
             <Route path="/tailor/reviews" element={<Reviews />} />
             <Route path="/tailor/Dashboard" element={<Dashboard />} />
             {/* <Route path="/example" element={<Example/>} /> */}

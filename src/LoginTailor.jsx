@@ -38,7 +38,7 @@ const LoginTailor=()=>{
             console.log("Auth State Updated", authState);
             const currentToken = sessionStorage.getItem('accessToken');
             console.log(currentToken);
-            navigate(`/tailor/dashboard`);
+            navigate(/tailor/dashboard);
         }
     }, [authState, navigate]);
     return (
@@ -141,12 +141,11 @@ const LoginTailor=()=>{
                                 />
                             </FormControl>
                             
-                            </form>
                             <Button sx={{ mt: 1 }} type="submit">Log in</Button>
-
+                            </form>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Don&apos;t have an account? 
-                                <Link href="/signupTailor">Sign up</Link>
+                                <Link href="/tailor/signup">Sign up</Link>
                             </Typography>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Go back to Home Page
