@@ -145,7 +145,7 @@ const LoginTailor=()=>{
                             </form>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Don&apos;t have an account? 
-                                <Link href="/signupTailor">Sign up</Link>
+                                <Link href="/tailor/signup">Sign up</Link>
                             </Typography>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Go back to Home Page
