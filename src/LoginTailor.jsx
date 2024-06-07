@@ -38,7 +38,7 @@ const LoginTailor=()=>{
             console.log("Auth State Updated", authState);
             const currentToken = sessionStorage.getItem('accessToken');
             console.log(currentToken);
-            navigate(`/tailor/dashboard`);
+            navigate(/tailor/dashboard);
         }
     }, [authState, navigate]);
     return (
