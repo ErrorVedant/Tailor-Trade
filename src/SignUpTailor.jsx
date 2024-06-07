@@ -67,7 +67,7 @@ function SignUpTailor() {
                     <main>
                         <Box
                             sx={{
-                                width: 300,
+                                width: 320,
                                 mx: 'auto', // margin left & right
                                 my: 4, // margin top & bottom
                                 py: 3, // padding top & bottom
@@ -77,23 +77,24 @@ function SignUpTailor() {
                                 gap: 2,
                                 boxShadow: 'md',
                                 bgcolor: 'white',
+                                // border:"solid black",
                                 borderRadius: '16px'
                             }}
                             variant="outlined"
                         >
                             <div sx={{ mb: '10px' }}>
                                 <Typography variant="h4" component="h1">
-                                    <b>Sign in <img src={logo} style={{ width: '100px', margin: '0px' }} alt="Logo" /></b>
+                                    <b>Sign Up <img src={logo} style={{ width: '100px', margin: '0px' }} alt="Logo" /></b>
                                 </Typography>
                             </div>
 
                             <CarouselForm />
 
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
-                                You already have an account? <Link href="/loginTailor">Log in</Link>
+                                You already have an account? <Link href="/tailor/login">Log in</Link>
                             </Typography>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
-                                Go back to Home Page <Link href="/home">Home</Link>
+                                Go back to Home Page <Link href="/">Home</Link>
                             </Typography>
                         </Box>
                     </main>

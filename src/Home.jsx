@@ -7,6 +7,12 @@ import { Button } from "@mui/material";
 import { Link } from 'react-router-dom'; 
 
 function Home() {
+    const storeUser=()=>{
+        sessionStorage.setItem('role', "user");
+    }
+    const storeTailor=()=>{
+        sessionStorage.setItem('role', "tailor");
+    }
     return (
         <Box sx={{
             display: 'flex',
@@ -45,8 +51,8 @@ function Home() {
                     overflow: 'hidden' // Hide any overflow content      
                 }}>
                     <img src={sewing_machine} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
-                    <Link to="/loginTailor" style={{ textDecoration: 'none' }}> {/* Use Link component */}
-                        <Button variant="contained" sx={{ bgcolor: '#1F4E5F', maxWidth: { md:'80%',sm:'50%',xs:'50%'} }}>Tailor</Button>
+                    <Link to="/tailor/login" style={{ textDecoration: 'none' }}> {/* Use Link component */}
+                        <Button variant="contained" sx={{ bgcolor: '#1F4E5F', maxWidth: { md:'80%',sm:'50%',xs:'50%'} }} onClick={storeTailor} >Tailor</Button>
                     </Link>   
                     </Container>            
             </Container>
@@ -79,8 +85,8 @@ function Home() {
                     overflow: 'hidden' // Hide any overflow content      
                 }}>
                     <img src={user1} style={{ maxWidth: '80%', maxHeight: '80%', objectFit: 'contain' }} />
-                    <Link to="/loginUser" style={{ textDecoration: 'none' }}> {/* Use Link component */}
-                        <Button variant="contained" sx={{ bgcolor: '#1F4E5F', maxWidth: { md:'80%',sm:'50%',xs:'50%'} }}>User</Button>
+                    <Link to="/user/login" style={{ textDecoration: 'none' }}> {/* Use Link component */}
+                        <Button variant="contained" sx={{ bgcolor: '#1F4E5F', maxWidth: { md:'80%',sm:'50%',xs:'50%'} }} onClick={storeUser}>User</Button>
                     </Link>                  
                      </Container>
             </Container>

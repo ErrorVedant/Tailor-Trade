@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FormControl, FormLabel, Input, Button, Snackbar, Alert, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const fields = [
   { name: 'username', label: 'Username', type: 'text', placeholder: 'John', required: true },
@@ -17,6 +18,7 @@ const fields = [
 ];
 
 const CarouselForm = () => {
+  const navigate =useNavigate();
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState(fields.reduce((acc, field) => {
     acc[field.name] = field.type === 'file' ? [] : '';
@@ -44,7 +46,7 @@ const CarouselForm = () => {
     }
   };
 
-  const handleLoginClick = () => {
+  const handleSignUpClick = async() => {
     const allFieldsFilled = fields.every(field => {
       if (field.required) {
         return field.type === 'file' ? formData[field.name].length > 0 : formData[field.name].trim() !== '';
@@ -57,6 +59,22 @@ const CarouselForm = () => {
       // Handle the login logic here
       console.log('All fields are filled. Proceed to login.');
       console.log(formData); // You can handle form submission here
+      try{
+        const response=await fetch("http://localhost:8080/tailor/signup" ,{
+          method:"POST",
+          headers: {
+            'Content-Type': 'application/json', // Set the Content-Type header
+        },
+        body:JSON.stringify(formData),
+        })
+        const result = await response.json();
+        console.log(result.success);
+        if(result.success===true){
+            navigate("/tailor/login");
+        }
+      }catch(error){
+        console.log("Error Sending to backend",error);
+      }
     }
   };
 
@@ -87,9 +105,11 @@ const CarouselForm = () => {
             Next
           </Button>
         </Box>
-        <Button onClick={handleLoginClick}>
-          Sign Up
-        </Button>
+        {step === Math.ceil(fields.length / 3) - 1 && (
+          <Button onClick={handleSignUpClick}>
+            Sign Up
+          </Button>
+        )}
       </Box>
       <Snackbar
         open={showPrompt}

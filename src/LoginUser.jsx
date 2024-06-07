@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
+import axiosInstance from './utils/axiosInstance'; // Import the axios instance file
+
+
 import Box from '@mui/material/Box';
 import Container from "@mui/material/Container";
 import sewing_machine from './img/sewing_machine.png';
@@ -7,8 +11,40 @@ import { ThemeProvider } from "@mui/material/styles";
 import fontcolorTheme from './fontcolorTheme'; // Import your custom theme
 import { Button, Typography, FormControl, FormLabel, Input, Link } from "@mui/material";
 import user1 from './img/user1.png';
+import { useNavigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
 
-function LoginUser() {
+const LoginUser=()=> {
+    const { authState, setAuthInfo } = useAuth();
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+  
+    let response =null;
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+             response = await axiosInstance.post('http://localhost:8080/user/login', { email, password });
+            console.log(response);
+            const { accessToken } = response.data;
+            setAuthInfo({accessToken});
+            
+
+           
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    }
+    useEffect(() => {
+        // To check if the token is stored properly
+        if (authState.isAuthenticated) {
+            console.log("Auth State Updated", authState);
+            const currentToken = sessionStorage.getItem('accessToken');
+            console.log(currentToken);
+            // navigate(``);
+        }
+    }, [authState, navigate]);
+
     return (
         <ThemeProvider theme={fontcolorTheme}>
             <Box sx={{
@@ -69,7 +105,7 @@ function LoginUser() {
                     <main >
                         <Box
                             sx={{
-                                width: 300,
+                                width: 320,
                                 mx: 'auto', // margin left & right
                                 my: 4, // margin top & bottom
                                 py: 3, // padding top & bottom
@@ -79,6 +115,7 @@ function LoginUser() {
                                 gap: 2,
                                 boxShadow: 'md',
                                 bgcolor:'white',
+                                // border:"solid black",
                                 borderRadius:'16px'
                             }}
                             variant="outlined"
@@ -94,6 +131,8 @@ function LoginUser() {
                                 <Input
                                     name="email"
                                     type="email"
+                                    value={email}
+                                    onChange={e=>setEmail(e.target.value)}
                                     placeholder="johndoe@email.com"
                                 />
                             </FormControl>
@@ -103,18 +142,20 @@ function LoginUser() {
                                 <Input
                                     name="password"
                                     type="password"
+                                    value={password}
+                                    onChange={e=>setPassword(e.target.value)}
                                     placeholder="password"
                                 />
                             </FormControl>
                             
-                            <Button sx={{ mt: 1 }}>Log in</Button>
+                            <Button sx={{ mt: 1 }} onClick={handleSubmit} >Log in</Button>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Don&apos;t have an account? 
-                                <Link href="/signupUser">Sign up</Link>
+                                <Link href="/user/signup">Sign up</Link>
                             </Typography>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
                                 Go back to Home Page
-                                <Link href="/home">Home</Link>
+                                <Link href="/">Home</Link>
                             </Typography>
                         </Box>
                     </main>
